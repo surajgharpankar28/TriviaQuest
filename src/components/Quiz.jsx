@@ -74,7 +74,6 @@ const Quiz = () => {
       setIndex(index + 1);
       setSelectedOption(null);
     } else {
-      alert(`Quiz Completed! Your final score is ${points}.`);
       navigate("/results", {
         state: { points, totalQuestions: questions.length },
       });
@@ -102,7 +101,15 @@ const Quiz = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-400 to-purple-600">
+    <div
+      className={`flex items-center justify-center h-screen  ${
+        difficulty === "easy"
+          ? "bg-gradient-to-r from-green-400 to-green-600"
+          : difficulty === "medium"
+          ? "bg-gradient-to-r from-orange-400 to-orange-600"
+          : "bg-gradient-to-r from-red-400 to-red-600"
+      }`}
+    >
       <div className="w-2xl p-6 bg-white shadow-md rounded-lg">
         <h1 className="text-4xl font-bold text-gray-800 text-center mb-6">
           Quiz: {category.name}
