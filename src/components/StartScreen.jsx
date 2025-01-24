@@ -45,7 +45,7 @@ const StartScreen = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-400 to-purple-600 text-white">
-      <div className="w-full max-w-md bg-white text-gray-800 rounded-lg shadow-xl p-8">
+      <div className="w-full max-w-md mx-3 bg-white text-gray-800 rounded-lg shadow-xl p-8">
         <h2 className="text-2xl font-bold text-center mb-6">
           Welcome to the TriviaQuest!
         </h2>
