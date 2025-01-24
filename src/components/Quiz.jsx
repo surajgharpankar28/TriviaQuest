@@ -86,16 +86,30 @@ const Quiz = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        Loading...
+      <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-600">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 border-t-4 border-white border-solid rounded-full animate-spin"></div>
+          <span className="text-xl text-white font-semibold">Loading...</span>
+        </div>
       </div>
     );
   }
 
   if (questions.length === 0) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        No questions available. Please try again.
+      <div className="flex items-center justify-center h-screen bg-gradient-to-r from-red-400 to-orange-600">
+        <div className="text-center text-white">
+          <h2 className="text-2xl font-semibold mb-4">
+            No questions available.
+          </h2>
+          <p className="text-lg mb-6">Please try again.</p>
+          <button
+            onClick={() => navigate("/")} // Redirect to home page
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
