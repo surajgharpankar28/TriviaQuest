@@ -182,9 +182,6 @@ const Quiz = () => {
         <div className="text-center text-gray-500 text-sm font-medium">
           Question {index + 1} of {questions.length}
         </div>
-        <div className="text-gray-700 text-center mt-4">
-          <span className="font-medium">Score:</span> {points} points
-        </div>
       </div>
     </div>
   );

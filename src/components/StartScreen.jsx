@@ -10,6 +10,7 @@ const StartScreen = () => {
   const [selectedCategoryName, setSelectedCategoryName] = useState("");
   const [selectedNumQuestions, setSelectedNumQuestions] = useState(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  const [message, setMessage] = useState(false);
 
   const fetchCategories = async () => {
     try {
@@ -28,8 +29,9 @@ const StartScreen = () => {
   }, []);
 
   const startQuiz = () => {
-    if (!selectedCategory || !selectedNumQuestions) {
-      alert("Please select a category and number of questions!");
+    if (!selectedCategory || !selectedNumQuestions || !selectedDifficulty) {
+      // alert("Please select a category and number of questions!");
+      setMessage(true);
       return;
     }
     navigate("/quiz", {
@@ -45,11 +47,11 @@ const StartScreen = () => {
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-400 to-purple-600 text-white">
       <div className="w-full max-w-md bg-white text-gray-800 rounded-lg shadow-xl p-8">
         <h2 className="text-2xl font-bold text-center mb-6">
-          Welcome to the Quiz!
+          Welcome to the TriviaQuest!
         </h2>
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-3 text-center">
-            Select a Category
+            Select a Category <span className="text-red-500">*</span>
           </h3>
           <select
             value={selectedCategory}
@@ -60,7 +62,7 @@ const StartScreen = () => {
               setSelectedCategory(selected?.id || "");
               setSelectedCategoryName(selected?.name || "");
             }}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            className="w-full text-center px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           >
             <option value="" disabled>
               -- Choose a category --
@@ -74,7 +76,7 @@ const StartScreen = () => {
         </div>
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-3 text-center">
-            Select Number of Questions
+            Select Number of Questions <span className="text-red-500">*</span>
           </h3>
           <div className="flex gap-3 justify-center">
             {[5, 10, 15, 20, 25, 30].map((num) => (
@@ -94,8 +96,9 @@ const StartScreen = () => {
         </div>
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-3 text-center">
-            Select Difficulty
+            Select Difficulty <span className="text-red-500">*</span>
           </h3>
+
           <div className="flex gap-3 justify-center">
             {["Easy", "Medium", "Hard"].map((difficulty) => (
               <button
@@ -103,7 +106,11 @@ const StartScreen = () => {
                 onClick={() => setSelectedDifficulty(difficulty)}
                 className={`px-4 py-2 rounded-full font-medium text-sm transition ${
                   selectedDifficulty === difficulty
-                    ? "bg-blue-600 text-white"
+                    ? difficulty === "Easy"
+                      ? "bg-gradient-to-r from-green-400 to-green-600 text-white"
+                      : difficulty === "Medium"
+                      ? "bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                      : "bg-gradient-to-r from-red-400 to-red-600 text-white"
                     : "bg-gray-200 hover:bg-blue-100"
                 }`}
               >
@@ -112,6 +119,14 @@ const StartScreen = () => {
             ))}
           </div>
         </div>
+        {message ? (
+          <div className="text-center text-md my-4 font-semibold text-yellow-500">
+            <h3>Please select all required options</h3>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div className="text-center">
           <button
             className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition"
