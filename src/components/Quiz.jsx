@@ -107,7 +107,18 @@ const Quiz = () => {
         <h1 className="text-4xl font-bold text-gray-800 text-center mb-6">
           Quiz: {category.name}
         </h1>
-        <hr className="border-gray-300 mb-6" />
+        <hr
+          className={`mb-6 
+  ${
+    difficulty === "easy"
+      ? "border-green-500"
+      : difficulty === "medium"
+      ? "border-orange-500"
+      : difficulty === "hard"
+      ? "border-red-500"
+      : "border-gray-300"
+  }`}
+        />
 
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-medium text-gray-700">
