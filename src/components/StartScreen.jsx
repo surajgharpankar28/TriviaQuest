@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const StartScreen = ({ numQuestions }) => {
+const StartScreen = () => {
   const navigate = useNavigate(); // Hook should be called at the top level
   const [categories, setCategories] = useState([]); // State to hold fetched categories
   const [selectedCategory, setSelectedCategory] = useState(null); // State to track selected category
