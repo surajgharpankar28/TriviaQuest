@@ -102,7 +102,7 @@ const Quiz = () => {
 
   return (
     <div
-      className={`flex items-center justify-center h-screen  ${
+      className={`flex  items-center justify-center h-screen  ${
         difficulty === "easy"
           ? "bg-gradient-to-r from-green-400 to-green-600"
           : difficulty === "medium"
@@ -110,7 +110,7 @@ const Quiz = () => {
           : "bg-gradient-to-r from-red-400 to-red-600"
       }`}
     >
-      <div className="w-2xl p-6 bg-white shadow-md rounded-lg">
+      <div className="w-2xl mx-3 p-6 bg-white shadow-md rounded-lg">
         <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Quiz: {category.name}
         </h1>
