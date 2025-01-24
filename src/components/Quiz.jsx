@@ -111,7 +111,7 @@ const Quiz = () => {
       }`}
     >
       <div className="w-2xl p-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-4xl font-bold text-gray-800 text-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Quiz: {category.name}
         </h1>
         <hr
