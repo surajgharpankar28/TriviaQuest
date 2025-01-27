@@ -116,7 +116,7 @@ const Quiz = () => {
 
   return (
     <div
-      className={`flex  items-center justify-center h-screen  ${
+      className={`flex items-center justify-center min-h-screen p-4 ${
         difficulty === "easy"
           ? "bg-gradient-to-r from-green-400 to-green-600"
           : difficulty === "medium"
@@ -124,21 +124,18 @@ const Quiz = () => {
           : "bg-gradient-to-r from-red-400 to-red-600"
       }`}
     >
-      <div className="w-2xl mx-3 p-6 bg-white shadow-md rounded-lg">
+      <div className="max-w-4xl w-full bg-white shadow-md rounded-lg p-6">
         <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Quiz: {category.name}
         </h1>
         <hr
-          className={`mb-6 
-  ${
-    difficulty === "easy"
-      ? "border-green-500"
-      : difficulty === "medium"
-      ? "border-orange-500"
-      : difficulty === "hard"
-      ? "border-red-500"
-      : "border-gray-300"
-  }`}
+          className={`mb-6 ${
+            difficulty === "easy"
+              ? "border-green-500"
+              : difficulty === "medium"
+              ? "border-orange-500"
+              : "border-red-500"
+          }`}
         />
 
         <div className="flex justify-between items-center mb-4">
@@ -146,7 +143,7 @@ const Quiz = () => {
             {index + 1}. {decodeHtml(questions[index].question)}
           </h2>
         </div>
-        <div className="text-md font-semibold text-red-600">
+        <div className="text-md font-semibold text-red-600 mb-2">
           Time Left: {timeLeft}s
         </div>
         <ul className="space-y-4 mt-4 mb-6">
@@ -154,19 +151,18 @@ const Quiz = () => {
             <li
               key={idx}
               onClick={() => checkAns(option)}
-              className={`p-4 text-gray-800 rounded-lg cursor-pointer transition 
-                ${
-                  selectedOption === option
-                    ? option === questions[index].correct_answer
-                      ? "bg-green-400 text-white"
-                      : "bg-red-400 text-white"
-                    : selectedOption !== null &&
-                      option === questions[index].correct_answer
+              className={`p-4 text-gray-800 rounded-lg cursor-pointer transition ${
+                selectedOption === option
+                  ? option === questions[index].correct_answer
                     ? "bg-green-400 text-white"
-                    : "bg-gray-100 hover:bg-blue-100"
-                }`}
+                    : "bg-red-400 text-white"
+                  : selectedOption !== null &&
+                    option === questions[index].correct_answer
+                  ? "bg-green-400 text-white"
+                  : "bg-gray-100 hover:bg-blue-100"
+              }`}
             >
-              {decodeHtml(option)} {/* Decode HTML entities */}
+              {decodeHtml(option)}
             </li>
           ))}
         </ul>
